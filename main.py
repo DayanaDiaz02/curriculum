@@ -1,4 +1,5 @@
 from fastapi import FastAPI, HTTPException
+from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel
 from typing import List, Optional
 
@@ -6,6 +7,14 @@ app = FastAPI(
     title="Mi Currículum Vitae API",
     description="API interactiva con mi información profesional",
     version="1.0.0"
+)
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=False,
+    allow_methods=["*"],
+    allow_headers=["*"],
 )
 
 class Proyecto(BaseModel):
@@ -17,30 +26,30 @@ class Proyecto(BaseModel):
 
 MI_PERFIL = {
     "datos_personales": {
-        "nombre_completo": "Luisa Dayana Díaz Ibarra",
-        "rol": "Desarrolladora de Software / Estudiante",
-        "ubicacion": "Chihuahua, México",
+        "nombre_completo": " ",
+        "rol": " ",
+        "ubicacion": " ",
         "contacto": {
-            "email": "dayanadiaz0802@gmail.com",
-            "github": "https://github.com/DayanaDiaz02?tab=overview&from=2026-07-01&to=2026-07-15",
+            "email": " ",
+            "github": " ",
         }
     },
     "Experiencia_laboral": {
-        "Opticas_de_Chihuahua": "2024-actualidad"
+        " empresa": " ",
     },
     "logros_y_proyectos": [
         {
             "id": 1,
-            "nombre": "Nawesari",
-            "tipo": "Proyecto Integrador",
-            "descripcion": "Aplicación web que te enseña la pronunciacion y gramatica raramuri, una lengua muerta",
-            "tecnologias": ["React", "Larabase", "Supabase"]
+            "nombre": "ejemplo de proyecto",
+            "tipo": " ",
+            "descripcion": " ",
+            "tecnologias": []
         },
     ],
     "educacion": {
-        "institucion": "Universidad Tecnológica de Chihuahua",
-        "estado": "Estudiante 2024-actualidad",
-        "enfoque": "Desarrollo software y multiplataforma"
+        "institucion": " ",
+        "estado": " ",
+        "enfoque": " "
     }
 }
 
@@ -58,6 +67,11 @@ def obtener_inicio():
 @app.get("/cv", tags=["Completo"])
 def obtener_cv_completo():
     """Devuelve todo el currículum en un solo objeto JSON."""
+    return MI_PERFIL
+
+@app.get("/curriculum", tags=["Completo"])
+def obtener_curriculum():
+    """Alias para compatibilidad con clientes que esperan /curriculum."""
     return MI_PERFIL
 
 @app.get("/cv/perfil", tags=["Secciones"])
@@ -87,7 +101,7 @@ def agregar_proyecto(nuevo_proyecto: Proyecto):
     # Evitar IDs duplicados
     for proyecto in MI_PERFIL["logros_y_proyectos"]:
         if proyecto["id"] == nuevo_proyecto.id:
-            raise HTTPException(status_code=400, detail="¡Este ID de proyecto ya existe! ._.")
+            raise HTTPException(status_code=400, detail="¡Este ID de proyecto ya existe!")
             
     MI_PERFIL["logros_y_proyectos"].append(nuevo_proyecto.model_dump())
     return nuevo_proyecto
@@ -102,7 +116,7 @@ def actualizar_proyecto(proyecto_id: int, proyecto_actualizado: Proyecto):
             MI_PERFIL["logros_y_proyectos"][index] = proyecto_actualizado.model_dump()
             return proyecto_actualizado
             
-    raise HTTPException(status_code=404, detail="Proyecto no encontrado para actualizar ;-; ")
+    raise HTTPException(status_code=404, detail="Proyecto no encontrado para actualizar")
 
 
 #  DELETE: Eliminar un proyecto
@@ -112,9 +126,9 @@ def eliminar_proyecto(proyecto_id: int):
     for index, proyecto in enumerate(MI_PERFIL["logros_y_proyectos"]):
         if proyecto["id"] == proyecto_id:
             MI_PERFIL["logros_y_proyectos"].pop(index)
-            return {"mensaje": f"Proyecto con ID {proyecto_id} borrado exitosamente OwO"}
+            return {"mensaje": f"Proyecto con ID {proyecto_id} borrado exitosamente"}
             
-    raise HTTPException(status_code=404, detail="El proyecto que buscas borrar no existe X_X")
+    raise HTTPException(status_code=404, detail="El proyecto que buscas borrar no existe")
 
 
 # --- EL TRUCO MAGNÍFICO PARA EL BOTÓN DE PLAY ---
