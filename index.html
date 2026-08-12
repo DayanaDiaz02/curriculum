@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luisa Dayana Díaz Ibarra - Desarrolladora de Software</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: #f8f9fa;
+        }
+
+        /* Navegación */
+        nav {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 1rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        nav .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        nav h1 {
+            font-size: 1.5rem;
+        }
+
+        nav a {
+            color: white;
+            margin-left: 2rem;
+            text-decoration: none;
+            transition: opacity 0.3s;
+            cursor: pointer;
+        }
+
+        nav a:hover {
+            opacity: 0.8;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header / Hero */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 4rem 20px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero .rol {
+            font-size: 1.5rem;
+            opacity: 0.9;
+            margin-bottom: 1rem;
+        }
+
+        .hero .contacto {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+
+        .hero .contacto a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .hero .contacto a:hover {
+            opacity: 0.8;
+        }
+
+        /* Secciones */
+        section {
+            padding: 3rem 20px;
+            background: white;
+            margin: 2rem 0;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        section h2 {
+            font-size: 2rem;
+            color: #667eea;
+            margin-bottom: 2rem;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 1rem;
+            display: inline-block;
+        }
+
+        /* Perfil */
+        .perfil-info {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .perfil-card {
+            background: linear-gradient(135deg, #667eea15 0%, #764ba215 100%);
+            padding: 2rem;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .perfil-card h3 {
+            color: #667eea;
+            margin-bottom: 1rem;
+            font-size: 1.2rem;
+        }
+
+        .perfil-card p {
+            margin: 0.5rem 0;
+            color: #555;
+        }
+
+        /* Experiencia */
+        .experiencia-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #667eea;
+        }
+
+        .experiencia-item h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+        }
+
+        .experiencia-item .periodo {
+            color: #999;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+
+        /* Educación */
+        .educacion-item {
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: #f8f9fa;
+            border-radius: 8px;
+            border-left: 4px solid #764ba2;
+        }
+
+        .educacion-item h3 {
+            color: #764ba2;
+            margin-bottom: 0.5rem;
+        }
+
+        /* Proyectos */
+        .proyectos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .proyecto-card {
+            background: white;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            padding: 2rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .proyecto-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .proyecto-card h3 {
+            color: #667eea;
+            margin-bottom: 0.5rem;
+            font-size: 1.3rem;
+        }
+
+        .proyecto-card .tipo {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            display: inline-block;
+            padding: 0.4rem 0.8rem;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-bottom: 1rem;
+            font-weight: 500;
+        }
+
+        .proyecto-card .descripcion {
+            color: #555;
+            margin-bottom: 1rem;
+            line-height: 1.6;
+        }
+
+        .tecnologias {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .tech-badge {
+            background: #f0f1ff;
+            color: #667eea;
+            padding: 0.4rem 0.8rem;
+            border-radius: 15px;
+            font-size: 0.85rem;
+            border: 1px solid #667eea;
+        }
+
+        /* Loading y errores */
+        .loading {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .loading-spinner {
+            display: inline-block;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(102, 126, 234, 0.3);
+            border-radius: 50%;
+            border-top-color: #667eea;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .error {
+            background: #f8d7da;
+            color: #721c24;
+            padding: 1rem;
+            border-radius: 5px;
+            margin: 1rem 0;
+            border: 1px solid #f5c6cb;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: #999;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c3e50;
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 3rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .perfil-info {
+                grid-template-columns: 1fr;
+            }
+
+            .hero .contacto {
+                gap: 1rem;
+            }
+
+            nav .container {
+                flex-direction: column;
+                gap: 1rem;
+            }
+
+            nav a {
+                margin-left: 1rem;
+                font-size: 0.9rem;
+            }
+
+            section {
+                padding: 2rem 1rem;
+            }
+
+            section h2 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navegación -->
+    <nav>
+        <div class="container">
+            <h1>Mi CV</h1>
+            <div>
+                <a onclick="scrollToSection('perfil')">Perfil</a>
+                <a onclick="scrollToSection('experiencia')">Experiencia</a>
+                <a onclick="scrollToSection('educacion')">Educación</a>
+                <a onclick="scrollToSection('proyectos')">Proyectos</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <div class="hero">
+        <div class="container">
+            <h1 id="nombreCompleto">Cargando...</h1>
+            <p class="rol" id="rolPersonal">Cargando...</p>
+            <p id="ubicacion">Cargando...</p>
+            <div class="contacto">
+                <a id="emailLink" href="#" target="_blank">📧 Email</a>
+                <a id="githubLink" href="#" target="_blank">🔗 GitHub</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Contenido Principal -->
+    <div class="container">
+        
+        <!-- Sección Perfil -->
+        <section id="perfil">
+            <h2>👤 Perfil Profesional</h2>
+            <div class="perfil-info" id="perfilContent">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Experiencia -->
+        <section id="experiencia">
+            <h2>💼 Experiencia Laboral</h2>
+            <div id="experienciaContent">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Educación -->
+        <section id="educacion">
+            <h2>🎓 Educación</h2>
+            <div id="educacionContent">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Sección Proyectos -->
+        <section id="proyectos">
+            <h2>🚀 Proyectos Destacados</h2>
+            <div id="proyectosContent">
+                <div class="loading">
+                    <div class="loading-spinner"></div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2026 Luisa Dayana Díaz Ibarra | Desarrolladora de Software</p>
+    </footer>
+
+    <script>
+        const API_BASE_URL = 'http://127.0.0.1:8000';
+        const FALLBACK_CV = {
+            datos_personales: {
+                nombre_completo: 'Luisa Dayana Díaz Ibarra',
+                rol: 'Desarrolladora de Software / Estudiante',
+                ubicacion: 'Chihuahua, México',
+                contacto: {
+                    email: 'dayanadiaz0802@gmail.com',
+                    github: 'https://github.com/DayanaDiaz02'
+                }
+            },
+            Experiencia_laboral: {
+                Opticas_de_Chihuahua: '2024-actualidad'
+            },
+            logros_y_proyectos: [
+                {
+                    id: 1,
+                    nombre: 'Nawesari',
+                    tipo: 'Proyecto Integrador',
+                    descripcion: 'Aplicación web que te enseña la pronunciacion y gramatica raramuri, una lengua muerta',
+                    tecnologias: ['React', 'Larabase', 'Supabase']
+                }
+            ],
+            educacion: {
+                institucion: 'Universidad Tecnológica de Chihuahua',
+                estado: 'Estudiante 2024-actualidad',
+                enfoque: 'Desarrollo software y multiplataforma'
+            }
+        };
+ 
+        // Cargar CV completo al iniciar
+        window.addEventListener('DOMContentLoaded', cargarCV);
+ 
+        async function cargarCV() {
+            try {
+                const response = await fetch(`${API_BASE_URL}/cv`);
+                if (!response.ok) throw new Error('Error al conectar con la API');
+                
+                const data = await response.json();
+                llenarPerfil(data);
+                llenarExperiencia(data);
+                llenarEducacion(data);
+                llenarProyectos(data);
+            } catch (error) {
+                console.warn('Error al cargar la API, mostrando el CV local:', error);
+                llenarFallbackCV();
+            }
+        }
+ 
+        function llenarFallbackCV() {
+            const data = FALLBACK_CV;
+            llenarPerfil(data);
+            llenarExperiencia(data);
+            llenarEducacion(data);
+            llenarProyectos(data);
+        }
+
+        function llenarPerfil(data) {
+            const { datos_personales } = data;
+            
+            // Hero
+            document.getElementById('nombreCompleto').textContent = datos_personales.nombre_completo;
+            document.getElementById('rolPersonal').textContent = datos_personales.rol;
+            document.getElementById('ubicacion').textContent = `📍 ${datos_personales.ubicacion}`;
+            
+            // Links
+            const emailLink = document.getElementById('emailLink');
+            emailLink.href = `mailto:${datos_personales.contacto.email}`;
+            emailLink.textContent = `📧 ${datos_personales.contacto.email}`;
+            
+            const githubLink = document.getElementById('githubLink');
+            githubLink.href = datos_personales.contacto.github;
+            githubLink.textContent = '🔗 GitHub';
+
+            // Sección de perfil
+            const perfilHTML = `
+                <div class="perfil-card">
+                    <h3>Información Personal</h3>
+                    <p><strong>Nombre:</strong> ${datos_personales.nombre_completo}</p>
+                    <p><strong>Rol:</strong> ${datos_personales.rol}</p>
+                    <p><strong>Ubicación:</strong> ${datos_personales.ubicacion}</p>
+                </div>
+                <div class="perfil-card">
+                    <h3>Contacto</h3>
+                    <p><strong>Email:</strong> <a href="mailto:${datos_personales.contacto.email}" style="color: #667eea; text-decoration: none;">${datos_personales.contacto.email}</a></p>
+                    <p><strong>GitHub:</strong> <a href="${datos_personales.contacto.github}" target="_blank" style="color: #667eea; text-decoration: none;">Ver Perfil</a></p>
+                </div>
+            `;
+            
+            document.getElementById('perfilContent').innerHTML = perfilHTML;
+        }
+
+        function llenarExperiencia(data) {
+            const { Experiencia_laboral } = data;
+            
+            let html = '';
+            if (Object.keys(Experiencia_laboral).length === 0) {
+                html = '<div class="empty-state">No hay experiencia laboral registrada</div>';
+            } else {
+                for (const [empresa, periodo] of Object.entries(Experiencia_laboral)) {
+                    html += `
+                        <div class="experiencia-item">
+                            <h3>${empresa}</h3>
+                            <p class="periodo">${periodo}</p>
+                        </div>
+                    `;
+                }
+            }
+            
+            document.getElementById('experienciaContent').innerHTML = html;
+        }
+
+        function llenarEducacion(data) {
+            const { educacion } = data;
+            
+            const html = `
+                <div class="educacion-item">
+                    <h3>${educacion.institucion}</h3>
+                    <p><strong>Estado:</strong> ${educacion.estado}</p>
+                    <p><strong>Enfoque:</strong> ${educacion.enfoque}</p>
+                </div>
+            `;
+            
+            document.getElementById('educacionContent').innerHTML = html;
+        }
+
+        function llenarProyectos(data) {
+            const { logros_y_proyectos } = data;
+            
+            let html = '';
+            if (logros_y_proyectos.length === 0) {
+                html = '<div class="empty-state">No hay proyectos registrados</div>';
+            } else {
+                html = '<div class="proyectos-grid">';
+                logros_y_proyectos.forEach(proyecto => {
+                    html += `
+                        <div class="proyecto-card">
+                            <h3>${proyecto.nombre}</h3>
+                            <span class="tipo">${proyecto.tipo}</span>
+                            <p class="descripcion">${proyecto.descripcion}</p>
+                            <div class="tecnologias">
+                                ${proyecto.tecnologias.map(tech => 
+                                    `<span class="tech-badge">${tech}</span>`
+                                ).join('')}
+                            </div>
+                        </div>
+                    `;
+                });
+                html += '</div>';
+            }
+            
+            document.getElementById('proyectosContent').innerHTML = html;
+        }
+
+        function mostrarError(mensaje) {
+            const secciones = ['perfilContent', 'experienciaContent', 'educacionContent', 'proyectosContent'];
+            secciones.forEach(id => {
+                const elemento = document.getElementById(id);
+                if (elemento) {
+                    elemento.innerHTML = `<div class="error">${mensaje}</div>`;
+                }
+            });
+        }
+
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+    </script>
+</body>
+</html>
